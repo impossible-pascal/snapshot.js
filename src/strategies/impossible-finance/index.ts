@@ -96,10 +96,12 @@ export async function strategy(
             prev +
             parseFloat(
               formatUnits(
+                // All muls before divs to reduce truncation
                 result.lpBalance[idx][address[0]]
                   .mul(result.pairIFBalance[idx])
+                  .mul(options.pairs[idx].weightNumerator)
                   .div(result.pairTotalSupply[idx])
-                  .mul(options.pairs[idx].weight),
+                  .mul(options.pairs[idx].weightDenominator),
                 options.pairs[idx].decimals
               )
             ),
