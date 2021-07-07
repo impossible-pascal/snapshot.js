@@ -101,7 +101,7 @@ export async function strategy(
                   .mul(result.pairIFBalance[idx])
                   .mul(options.pairs[idx].weightNumerator)
                   .div(result.pairTotalSupply[idx])
-                  .mul(options.pairs[idx].weightDenominator),
+                  .div(options.pairs[idx].weightDenominator),
                 options.pairs[idx].decimals
               )
             ),
